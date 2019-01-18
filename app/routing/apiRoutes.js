@@ -1,7 +1,5 @@
-var path = require('path');
-var friends = require('../data/friends');
 var fs = require('fs');
-
+var friends = require('../data/friends.json');
 
 module.exports = function (app) {
 
@@ -12,18 +10,20 @@ module.exports = function (app) {
 
     // Create New Friend Profile - takes in JSON input
     app.post("/api/friends", function (request, response) {
+        
         // request.body hosts is equal to the JSON post sent from the form submit button
         // This works because of our body parsing middleware
         var newFriend = request.body;
-        var matchPosition = 0;
-        var matchDifference = 99999999;
+        var matchPosition = 0;          // Defaults to first profile in data array
+        var matchDifference = 0xF5;     // Initial value must exceed highest possible. So...Fleventy-five 
 
+        // Loop through friends array compare total diffence between each and new friend data 
         for (let i = 0; i < friends.length; i++) {
             var difference = totalDifference(newFriend.scores, friends[i].scores);
             console.log(friends[i].name);
             console.log("Total Difference is: " + difference + "\n");
             
-
+            // Determines position of closest (or first exact match) 
             if (difference < matchDifference) {
                 matchDifference = difference;
                 matchPosition = i;
@@ -33,33 +33,24 @@ module.exports = function (app) {
         console.log(newFriend);
         var match = friends[matchPosition];
 
+        // Append new friend object to data array and return best match for modal display 
         friends.push(newFriend);
         console.log(match);
         response.json(match);
-        
 
-        fs.readFile('../data/myjsonfile.json', 'utf8', function readFileCallback(err, data){
-            if (err){
-                console.log(err);
-            } else {
-            let obj = JSON.parse(data); //now it an object
-            obj.push(friends); //add some data
-            json = JSON.stringify(obj); //convert it back to json
-            fs.writeFile('../data/myjsonfile.json', json, 'utf8', callback); // write it back 
-        }});
+        // Maintain data persistence in file
+        fs.writeFile('./app/data/friends.json', JSON.stringify(friends), 'utf8', function(err){
+            if (err) throw err;
+        });
     });
 }
 
+// Input: Two arrays (of same length or it breaks)
+// Output: Takes the absolute value of the difference between each at every index and returns the sum
 function totalDifference(array1, array2) {
-    var difference = []
-
+    var difference = [];
     for (i = 0; i < array1.length; i++) {
         difference[i] = Math.abs(array1[i] - array2[i]);
     }
-    
-    return difference.reduce(add, 0);
-}
-
-function add(a, b) {
-    return a + b;
+    return difference.reduce((a,b) => a + b, 0);
 }
