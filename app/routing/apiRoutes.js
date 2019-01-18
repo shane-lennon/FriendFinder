@@ -1,5 +1,7 @@
 var path = require('path');
 var friends = require('../data/friends');
+var fs = require('fs');
+
 
 module.exports = function (app) {
 
@@ -34,7 +36,17 @@ module.exports = function (app) {
         friends.push(newFriend);
         console.log(match);
         response.json(match);
-        //console.log(friends)
+        
+
+        fs.readFile('../data/myjsonfile.json', 'utf8', function readFileCallback(err, data){
+            if (err){
+                console.log(err);
+            } else {
+            let obj = JSON.parse(data); //now it an object
+            obj.push(friends); //add some data
+            json = JSON.stringify(obj); //convert it back to json
+            fs.writeFile('../data/myjsonfile.json', json, 'utf8', callback); // write it back 
+        }});
     });
 }
 

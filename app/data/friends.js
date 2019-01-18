@@ -21,7 +21,7 @@ var friends = [{
         photo: "https://quotesaga-img.s3.amazonaws.com/quote/QS_af2d9af8ed1e4cf08d51224898fe0f1c.jpg",
         scores: [
             3,
-            3,
+            5,
             3,
             3,
             3,
@@ -97,6 +97,38 @@ var friends = [{
         ]
     },
     {
+        name: "Erlich Bachman",
+        photo: "https://hbowatch.com/wp-content/uploads/2018/03/ErlichBachman2-238x300.jpg",
+        scores: [
+            5,
+            5,
+            5,
+            5,
+            5,
+            5,
+            5,
+            5,
+            5,
+            5
+        ]
+    },
+    {
+        name: "Tom",
+        photo: "http://www.mtv.com.au/sites/default/files/styles/image-w-520-h-292-scale-crop/public/mtv_au/galleries/large/2018/04/12/tommyspace.jpg?itok=u2XzKYAw",
+        scores: [
+            5,
+            5,
+            5,
+            5,
+            5,
+            5,
+            5,
+            5,
+            5,
+            5
+        ]
+    },
+    {
         name: "Oscar the Grouch",
         photo: "https://vignette.wikia.nocookie.net/muppet/images/5/5f/OscarsClassicStare.jpg/revision/latest?cb=20120222062511",
         scores: [
@@ -115,22 +147,6 @@ var friends = [{
     {
         name: "Cookie Monster",
         photo: "https://m.media-amazon.com/images/S/aplus-media/vc/388cedc4-283c-45bb-bcdd-d8efaf79bfa0._SR300,300_.png",
-        scores: [
-            5,
-            5,
-            5,
-            5,
-            5,
-            5,
-            5,
-            5,
-            5,
-            5
-        ]
-    },
-    {
-        name: "Tom",
-        photo: "http://www.mtv.com.au/sites/default/files/styles/image-w-520-h-292-scale-crop/public/mtv_au/galleries/large/2018/04/12/tommyspace.jpg?itok=u2XzKYAw",
         scores: [
             5,
             5,
