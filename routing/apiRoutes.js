@@ -39,7 +39,7 @@ module.exports = function (app) {
         response.json(match);
 
         // Maintain data persistence in file
-        fs.writeFile('./app/data/friends.json', JSON.stringify(friends), 'utf8', function(err){
+        fs.writeFile('./data/friends.json', JSON.stringify(friends), 'utf8', function(err){
             if (err) throw err;
         });
     });

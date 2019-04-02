@@ -17,7 +17,7 @@ app.use(express.json());
 // Sets up the express app to handle routes
 // =============================================================
 
-require('./app/routing/apiRoutes.js')(app);
+require('./routing/apiRoutes.js')(app);
 // =================================================================================
 // It is important to note: sequence matters in which route is listed first here.
 // Since the 'catch-all' route which defaults to the main page is at the end of the 
@@ -25,7 +25,7 @@ require('./app/routing/apiRoutes.js')(app);
 // of routing files are used then wildcard defaults should be at the end of the very 
 // last one. Anything listed after will never 'get fired'. Also, nodemon rules.
 // =================================================================================
-require('./app/routing/htmlRoutes.js')(app);
+require('./routing/htmlRoutes.js')(app);
 
 
 
